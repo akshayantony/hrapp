@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Stripe Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="container">
+
+
+        <form action="." method="post" id="payment-form">
+            {% csrf_token %}
+            <label for="card-element">
+                Credit or debit card
+            </label>
+
+            <!-- a Stripe Element will be inserted here. -->
+
+
+            {% for field in form %}
+            <div class="field-wrapper">
+
+                <div class="field-label">
+                    {{ field.label_tag }}:
+                </div>
+
+                <div class="field-field">
+                    <div id="card-element">
+                        {{ field }}
+                    </div>
+
+                    {{ field.errors }}
+                </div>
+
+            </div>
+            <div id="card-errors" role="alert"></div>
+
+            {% endfor %}
+            {{ form.errors }}
+
+            <br>
+            <input type="submit" value="Charge Me!" />
+        </form>
+    </div>
+
+</div>
+</body>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+</html>

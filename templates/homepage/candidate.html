@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+    	    <h3>Candidate form</h3>
+
+            <form method="post">
+                {% csrf_token  %}
+                    {% for field in form %}
+                        <li>
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {{ field.errors }}
+                        </li>
+                    {% endfor %}
+                    <button type="submit"> Submit </button>
+            </form>
+        </div>
+        <br>
+    </div>
+    <div>
+         Not a Member? <a href="{% url 'homepage:charge' %}">Pay here</a>
+    </div>
+    <div>
+        Become a paid member and get sayone requirements in the future
+    </div>
+</div>
