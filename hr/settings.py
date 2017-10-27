@@ -136,3 +136,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STRIPE_PUBLIC_KEY ='pk_test_S5QEjDTTQ7njMXGtU4YPcjRF'
 STRIPE_SECRET_KEY ='sk_test_3gNLy1QOB6zNV0YmTQiTqET4'
 # STRIPE_API_KEY = 'sk_test_3gNLy1QOB6zNV0YmTQiTqET4'
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'dailycirclenews@gmail.com'
+EMAIL_HOST_PASSWORD ='akshay123@'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'The Daily Circles News <noreply@example.com>'

@@ -6,4 +6,5 @@ app_name='homepage'
 urlpatterns=[
     url(r'^$',views.CandidateFormView.as_view(),name='cform'),
     url(r'^charge/$', views.ChargeView.as_view(), name="charge"),
+    url(r'^jobupdates/$', views.JobFormView.as_view(), name="jobform"),
 ]

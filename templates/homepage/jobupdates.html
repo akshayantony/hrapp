@@ -1,7 +1,6 @@
-<div class="container">
-    <div class="row">
+ <div class="row">
         <div class="col-sm-12 col-md-12">
-    	    <h3>Candidate form</h3>
+    	    <h3>Vacancy details</h3>
 
             <form method="post">
                 {% csrf_token  %}
@@ -16,19 +15,4 @@
             </form>
         </div>
         <br>
-    </div>
-    <div>
-         Not a Member? <a href="{% url 'homepage:charge' %}">Pay here</a>
-    </div>
-    <div>
-        Become a paid member and get sayone requirements in the future
-    </div>
-
-<div>
-    {% if request.user.is_superuser %}
-    <a href="{% url 'homepage:jobform' %}">send job updates?</a>
-
-    {% endif %}
-</div>
-
-</div>
+ </div>

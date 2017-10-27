@@ -6,8 +6,8 @@ from django.template import RequestContext
 from django.views import generic, View
 # from hr import settings
 from django.conf import settings
-from .models import Candidate,Sale
-from .forms import CandForm,SalePaymentForm,StripeForm
+from .models import Candidate,Tokens,Jobs
+from .forms import CandForm,StripeForm,JobForm
 
 import stripe
 
@@ -47,35 +47,76 @@ class StripeMixin(object):
         return context
 
 class ChargeView(StripeMixin, generic.FormView):
-    template_name = 'homepage/charge1.html'
+    template_name = 'homepage/charge.html'
     form_class = StripeForm
+    model = Tokens
 
-    def form_valid(self, form):
-        import pdb
-        pdb.set_trace()
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-
-        customer_data = {
-            'description': 'Some Customer Data',
-            'card': form.cleaned_data['stripe_token']
-        }
-        return super(ChargeView, self).form_valid(form)
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
 
 
-def charge(request):
-    if request.method == "POST":
-        import pdb
-        pdb.set_trace()
-        print(request.POST)
-        form = SalePaymentForm(request.POST)
+    def post(self, request):
+        form = self.form_class(request.POST)
 
-        if form.is_valid():
-            token = request.form['stripeToken']
-            print(token)
-            return HttpResponse("Success! We've charged your card!")
-    else:
-        form = SalePaymentForm()
+        email = request.POST['email']
+        queryset = Candidate.objects.filter(email=email)
+        if queryset.count()>0:
+            if (form.is_valid()):
+                queryset.update(member='True')
+                return HttpResponse("Success! We've charged your card!")
+            else:
+                return HttpResponse("Sorry! attempt failed.. try again later")
+        else:
+            return HttpResponse("Kindly enter your details in candidate details form first")
+        return render(request, self.template_name, {'form': form})
 
-    return render(request, 'homepage/charge1.html', {'form': form})
-    # return render_to_response('homepage/charge.html', RequestContext(request, {'form': form}))
 
+class JobFormView(generic.FormView):
+    template_name = 'homepage/jobupdates.html'
+    form_class = JobForm
+    model=Jobs
+
+
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+
+        if (form.is_valid()):
+            form.save()
+            return redirect('homepage:cform')
+        else:
+            return HttpResponse("invalid form")
+
+        return render(request, self.template_name, {'form': form})
+
+
+
+
+
+
+
+
+
+
+# def charge(request):
+#     if request.method == "POST":
+#         import pdb
+#         pdb.set_trace()
+#         print(request.POST)
+#         form = SalePaymentForm(request.POST)
+#
+#         if form.is_valid():
+#             token = request.form['stripeToken']
+#             print(token)
+#             return HttpResponse("Success! We've charged your card!")
+#     else:
+#         form = SalePaymentForm()
+#
+#     return render(request, 'homepage/charge1.html', {'form': form})
+#     return render_to_response('homepage/charge.html', RequestContext(request, {'form': form}))
+#
