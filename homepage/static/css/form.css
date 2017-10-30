@@ -21,8 +21,6 @@
     margin-bottom: 55px;
 }
 
-/* The form title */
-
 .form-basic h1{
     display: inline-block;
     box-sizing: border-box;
@@ -114,9 +112,6 @@
     border: 0;
     margin: 40px 183px 0;
 }
-
-/*	Making the form responsive. Remove this media query
-    if you don't need the form to work on mobile devices. */
 
 @media (max-width: 600px) {
 

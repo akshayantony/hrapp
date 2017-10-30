@@ -1,4 +1,4 @@
-	.header-basic {
+.header-basic {
 	background-color: #292c2f;
 	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.15);
 	padding: 20px 40px;
@@ -12,8 +12,6 @@
 	margin: 0 auto;
 }
 
-/* Logo */
-
 .header-basic .header-limiter h1 {
 	float: left;
 	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
@@ -24,8 +22,6 @@
 .header-basic .header-limiter h1 span {
 	color: #5383d3;
 }
-
-/* The header links */
 
 .header-basic .header-limiter a {
 	color: #ffffff;
@@ -57,8 +53,6 @@
 	opacity: 1;
 }
 
-/* Making the header responsive */
-
 @media all and (max-width: 600px) {
 
 	.header-basic {
@@ -84,8 +78,6 @@
 	}
 
 }
-
-/* For the headers to look good, be sure to reset the margin and padding of the body */
 
 body {
 	margin:0;

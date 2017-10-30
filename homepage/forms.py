@@ -1,8 +1,7 @@
 from django import forms
 from .models import Candidate,Tokens,Jobs
 from django.core.exceptions import ValidationError
-from datetime import date, datetime
-from calendar import monthrange
+from datetime import date
 
 class CandForm(forms.ModelForm):
 
@@ -27,14 +26,12 @@ class StripeForm(forms.Form):
         exp_year = self.cleaned_data["exp_year"]
         if exp_year not in range(date.today().year, date.today().year + 15):
             raise ValidationError("enter a valid date")
-        email = self.cleaned_data["email"]
 
         if not self.errors:
             email = self.cleaned_data["email"]
             number = self.cleaned_data["number"]
             cvc = self.cleaned_data["cvc"]
             token = self.cleaned_data["stripe_token"]
-            print(token)
             tokenobj = Tokens()
 
             success, instance = tokenobj.charge(1000, number, exp_month, exp_year, cvc, token)

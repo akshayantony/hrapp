@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template import loader
 from django.db import models
+
 from hr import settings
 
 res_choices=(
@@ -78,8 +79,6 @@ class Tokens(models.Model):
 
         return True, response
 
-
-
 class Jobs(models.Model):
     department = models.CharField(max_length=100, choices=dept_choices)
     experience=models.CharField(max_length=100,choices=exp_choices)
@@ -87,7 +86,6 @@ class Jobs(models.Model):
 
     def __str__(self):
         return self.department
-
 
 @receiver(post_save, dispatch_uid="news_update", sender=Jobs)
 def subscription_handler(instance,**kwargs):
@@ -103,7 +101,6 @@ def subscription_handler(instance,**kwargs):
         fail_silently=False,
     )
     return HttpResponse("Entered Signal")
-
 
 post_save.connect(subscription_handler, sender=Jobs, dispatch_uid="subscription_handler")
 

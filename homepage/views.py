@@ -2,14 +2,11 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
-from django.template import RequestContext
 from django.views import generic, View
 from django.conf import settings
 
 from .models import Candidate,Tokens,Jobs
 from .forms import CandForm,StripeForm,JobForm,Revisitform
-
-import stripe
 
 class CandidateFormView(View):
     model = Candidate

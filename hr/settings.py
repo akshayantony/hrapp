@@ -10,13 +10,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '@3&)2-3_*s0jpxfnca@4jqe7=$6!^21fg=nrx)jbtck8qo--_e'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
-# Application definition
+ALLOWED_HOSTS = ['127.0.0.1', 'hrapp-sayone.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
