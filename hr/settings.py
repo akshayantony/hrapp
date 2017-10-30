@@ -76,7 +76,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-#
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -105,6 +105,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+CORS_ORIGIN_WHITELIST = (
+'https://hrapp-sayone.herokuapp.com','localhost:8000',
+)
 
 STRIPE_PUBLIC_KEY ='pk_test_S5QEjDTTQ7njMXGtU4YPcjRF'
 STRIPE_SECRET_KEY ='sk_test_3gNLy1QOB6zNV0YmTQiTqET4'
@@ -117,3 +120,6 @@ EMAIL_HOST_USER = 'dailycirclenews@gmail.com'
 EMAIL_HOST_PASSWORD ='akshay123@'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'The Daily Circles News <noreply@example.com>'
+
+SITE_ID = 1
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
