@@ -52,4 +52,10 @@ class JobForm(forms.ModelForm):
         model=Jobs
         fields='__all__'
 
+class Revisitform(forms.Form):
+    email_field=forms.CharField(max_length=150)
+
+    class Meta:
+        fields=['email_field',]
+
 

@@ -1,0 +1,17 @@
+{% extends "./candidate.html" %}
+{% block candidateform %}
+    <div class=" alert alert-dismissable fade in ">
+        <a href="#" data-dismiss="alert" aria-label="close" style="font-size: 1.675em">Thankyou for your response</a>
+    </div>
+{% endblock candidateform %}
+{% block member %}
+    <div class="well well-lg">
+        <h4 style="font-size: 1.675em">Not a Member? <a href="{% url 'homepage:charge' %}">Pay here</a> <br>
+        Become a paid member and get Sayone Job Updates in the future.</h4>
+    </div>
+{%endblock member%}
+
+{%block footer%}
+{%endblock footer %}
+{% block revisit %}
+{% endblock revisit %}

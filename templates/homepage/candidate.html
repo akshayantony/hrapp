@@ -1,34 +1,57 @@
+<html>
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+</head>
+
+<body>
+
+{% include "./header.html" %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-12">
-    	    <h3>Candidate form</h3>
+        <div class="col-sm-6 col-md-6">
 
-            <form method="post">
+            {% block candidateform %}
+             <div class="form-title-row text-center">
+                <h1>Candidate form</h1>
+            </div>
+            <form id="myform" method="post" class="form-basic" style="list-style:none">
                 {% csrf_token  %}
+                <div class="form-row">
                     {% for field in form %}
                         <li>
-                            {{ field.label_tag }}
-                            {{ field }}
-                            {{ field.errors }}
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        {{ field.errors }}
                         </li>
                     {% endfor %}
-                    <button type="submit"> Submit </button>
+                </div>
+                <button type="submit"> Submit </button>
             </form>
+            {% endblock candidateform %}
+        </div>
+        <div class="col-sm-6 col-md-6">
+            {% block revisit %}
+            <h4>Attended Sayone interviews in the past?</h4>
+            <form method="post" action="{% url 'homepage:revisit'%}">
+                {% csrf_token  %}
+                <input type="email" name="email_field" class=" text-center" placeholder="Email">
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
+            {% endblock revisit %}
         </div>
         <br>
     </div>
-    <div>
-         Not a Member? <a href="{% url 'homepage:charge' %}">Pay here</a>
-    </div>
-    <div>
-        Become a paid member and get sayone requirements in the future
-    </div>
-
-<div>
-    {% if request.user.is_superuser %}
-    <a href="{% url 'homepage:jobform' %}">send job updates?</a>
-
-    {% endif %}
+    {% block member %} {% endblock member %}
 </div>
-
-</div>
+{%block footer%}
+{% include "./footer.html" %}
+{%endblock footer %}
+</body>
+</html>

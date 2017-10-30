@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+
+</style>
+
+
+
+
+</head>
+
+	<body>
+
+		<header class="header-basic">
+
+			<div class="header-limiter">
+
+				<h1><a href="{% url 'homepage:cform' %}">Welcome To<span>Sayone</span></a></h1>
+
+				<nav>
+					<a href="{% url 'homepage:cform' %}">Home</a>
+					{% if request.user.is_superuser %}
+					<a href="{% url 'homepage:jobform' %}" >Send Job Updates</a>
+					<a href="{% url 'homepage:charge' %}">Payment</a>
+					{% endif %}
+				</nav>
+			</div>
+
+		</header>
+
+	</body>
+
+</html>

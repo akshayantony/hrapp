@@ -4,10 +4,10 @@ from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.views import generic, View
-# from hr import settings
 from django.conf import settings
+
 from .models import Candidate,Tokens,Jobs
-from .forms import CandForm,StripeForm,JobForm
+from .forms import CandForm,StripeForm,JobForm,Revisitform
 
 import stripe
 
@@ -15,7 +15,6 @@ class CandidateFormView(View):
     model = Candidate
     form_class=CandForm
     template_name='homepage/candidate.html'
-
 
     def get(self,request):
         form=self.form_class()
@@ -34,13 +33,13 @@ class CandidateFormView(View):
             pass
         if(form.is_valid()):
             form.save()
-            return redirect('homepage:cform')
+            return render(request,'homepage/response.html')
         else:
             pass
         return render(request,self.template_name,{'form':form})
 
-
 class StripeMixin(object):
+
     def get_context_data(self, **kwargs):
         context = super(StripeMixin, self).get_context_data(**kwargs)
         context['publishable_key'] = settings.STRIPE_PUBLIC_KEY
@@ -77,46 +76,34 @@ class JobFormView(generic.FormView):
     form_class = JobForm
     model=Jobs
 
-
     def get(self, request):
         form = self.form_class()
         return render(request, self.template_name, {'form': form})
 
-
     def post(self, request):
         form = self.form_class(request.POST)
-
         if (form.is_valid()):
             form.save()
             return redirect('homepage:cform')
         else:
             return HttpResponse("invalid form")
-
         return render(request, self.template_name, {'form': form})
 
+class Revisit(View):
 
+    def post(self, request):
+        form = Revisitform(request.POST)
+        email = request.POST['email_field']
+        queryset = Candidate.objects.filter(email=email)
+        if queryset.count() > 0:
+            if (form.is_valid()):
+                for r in queryset:
+                    n_attempts=r.n_attempts+1
+                    queryset.update(n_attempts=n_attempts)
+        else:
+            return HttpResponse("Kindly register")
+        return render(request, 'homepage/response.html')
 
-
-
-
-
-
-
-
-# def charge(request):
-#     if request.method == "POST":
-#         import pdb
-#         pdb.set_trace()
-#         print(request.POST)
-#         form = SalePaymentForm(request.POST)
-#
-#         if form.is_valid():
-#             token = request.form['stripeToken']
-#             print(token)
-#             return HttpResponse("Success! We've charged your card!")
-#     else:
-#         form = SalePaymentForm()
-#
-#     return render(request, 'homepage/charge1.html', {'form': form})
-#     return render_to_response('homepage/charge.html', RequestContext(request, {'form': form}))
-#
+    def get(self, request):
+        form = Revisitform()
+        return redirect('homepage:cform')

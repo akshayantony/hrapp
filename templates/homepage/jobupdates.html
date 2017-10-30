@@ -1,18 +1,29 @@
- <div class="row">
-        <div class="col-sm-12 col-md-12">
-    	    <h3>Vacancy details</h3>
+{% extends "./candidate.html" %}
 
-            <form method="post">
+{% block candidateform %}
+<div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="form-title-row text-center">
+    	    <h3>Vacancy details</h3>
+            </div>
+
+            <form method="post" class="form-basic" style="list-style:none">
                 {% csrf_token  %}
+                <div class="form-row">
                     {% for field in form %}
                         <li>
                             {{ field.label_tag }}
+                            <br>
                             {{ field }}
                             {{ field.errors }}
                         </li>
                     {% endfor %}
-                    <button type="submit"> Submit </button>
+                </div>
+                    <button type="submit" class="btn btn-primary"> Submit </button>
             </form>
         </div>
         <br>
  </div>
+{% endblock candidateform %}
+{% block revisit %}
+{% endblock revisit %}
