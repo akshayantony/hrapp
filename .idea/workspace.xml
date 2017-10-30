@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519c83d6-eb31-48a1-9147-8eefc5e3bf19" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/admin.py" afterPath="$PROJECT_DIR$/homepage/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/apps.py" afterPath="$PROJECT_DIR$/homepage/apps.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/forms.py" afterPath="$PROJECT_DIR$/homepage/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/models.py" afterPath="$PROJECT_DIR$/homepage/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/static/css/footer.css" afterPath="$PROJECT_DIR$/homepage/static/css/footer.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/static/css/form.css" afterPath="$PROJECT_DIR$/homepage/static/css/form.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/static/css/header.css" afterPath="$PROJECT_DIR$/homepage/static/css/header.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/urls.py" afterPath="$PROJECT_DIR$/homepage/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/views.py" afterPath="$PROJECT_DIR$/homepage/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/settings.py" afterPath="$PROJECT_DIR$/hr/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/wsgi.py" afterPath="$PROJECT_DIR$/hr/wsgi.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -84,17 +73,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hr/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="68" column="33" lean-forward="false" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
+            <state relative-caret-position="234">
+              <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wsgi.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wsgi.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hr/wsgi.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="36">
@@ -151,8 +140,8 @@
         <option value="$PROJECT_DIR$/homepage/urls.py" />
         <option value="$PROJECT_DIR$/homepage/views.py" />
         <option value="$PROJECT_DIR$/Procfile" />
-        <option value="$PROJECT_DIR$/hr/settings.py" />
         <option value="$PROJECT_DIR$/hr/wsgi.py" />
+        <option value="$PROJECT_DIR$/hr/settings.py" />
       </list>
     </option>
   </component>
@@ -659,14 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hr/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="68" column="33" lean-forward="false" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hr/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -674,6 +655,14 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hr/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
