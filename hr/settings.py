@@ -32,6 +32,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'hr.urls'
@@ -65,7 +66,7 @@ WSGI_APPLICATION = 'hr.wsgi.application'
 #         'PORT': '',
 #     }
 # }
-
+#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -103,8 +104,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+
 CORS_ORIGIN_WHITELIST = (
 'https://hrapp-sayone.herokuapp.com','localhost:8000',
 )
@@ -122,4 +128,4 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'The Daily Circles News <noreply@example.com>'
 
 SITE_ID = 1
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
