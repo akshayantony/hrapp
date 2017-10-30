@@ -17,7 +17,6 @@ class CandidateFormView(View):
         form=self.form_class()
         if not self.request.user.is_staff:
             form.fields.pop('result')
-            form.fields.pop('n_attempts')
         return render(request,self.template_name,{'form':form})
 
     def post(self,request):
