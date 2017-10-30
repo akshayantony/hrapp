@@ -16,18 +16,19 @@ res_choices=(
     )
 
 dept_choices = (
-    ('An', 'Android'),
-    ('Py', 'Python Django'),
-    ('BA', 'Business Analyst'),
+    ('Android', 'Android'),
+    ('Python', 'Python Django'),
+    ('Tester','Tester'),
+    ('Business Analyst', 'Business Analyst'),
     ('HR', 'HR'),
 )
 
 exp_choices = (
-    ('F', 'Freshers'),
-    ('O', 'One'),
-    ('T', 'Two'),
-    ('Th', 'Three'),
-    ('th+','Three plus')
+    ('0', 'Freshers'),
+    ('1', 'One'),
+    ('2', 'Two'),
+    ('3', 'Three'),
+    ('3+','Three plus')
 )
 
 phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
@@ -90,8 +91,6 @@ class Jobs(models.Model):
 
 @receiver(post_save, dispatch_uid="news_update", sender=Jobs)
 def subscription_handler(instance,**kwargs):
-    import pdb
-    pdb.set_trace()
     subscribers=Candidate.objects.filter(member=True)
     vacancy_temp=loader.get_template('homepage/vacancyinfo.html')
     context={ 'instance':instance }

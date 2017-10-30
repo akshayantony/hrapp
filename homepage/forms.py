@@ -8,7 +8,7 @@ class CandForm(forms.ModelForm):
 
     class Meta:
         model=Candidate
-        fields='__all__'
+        fields=['name', 'email', 'phone_number', 'college','department','experience','n_attempts','result']
 
 
 class StripeForm(forms.Form):

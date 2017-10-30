@@ -31,8 +31,8 @@
 					<a href="{% url 'homepage:cform' %}">Home</a>
 					{% if request.user.is_superuser %}
 					<a href="{% url 'homepage:jobform' %}" >Send Job Updates</a>
-					<a href="{% url 'homepage:charge' %}">Payment</a>
 					{% endif %}
+					<a href="{% url 'homepage:charge' %}">Payment</a>
 				</nav>
 			</div>
 

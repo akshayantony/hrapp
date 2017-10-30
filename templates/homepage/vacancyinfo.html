@@ -1,4 +1,7 @@
 Hy,
 There is a vacancy in Sayone for the post of {{ instance.department }}.
 Experience required: {{ instance.experience }}
+{% if instance.education %}
+Educational Qualification: {{ instance.education }}
+{% endif %}
 Kindly forward resumes to hr@example.com
