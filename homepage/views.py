@@ -25,7 +25,6 @@ class CandidateFormView(View):
         form=self.form_class(request.POST)
         if not self.request.user.is_staff:
             form.fields.pop('result')
-            form.fields.pop('n_attempts')
         else:
             pass
         if(form.is_valid()):
