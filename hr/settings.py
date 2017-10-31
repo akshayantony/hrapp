@@ -78,7 +78,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-#
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -120,8 +120,8 @@ STRIPE_SECRET_KEY ='sk_test_3gNLy1QOB6zNV0YmTQiTqET4'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'dailycirclenews@gmail.com'
-EMAIL_HOST_PASSWORD ='akshay123@'
+EMAIL_HOST_USER = 'akshayhrapp@gmail.com'
+EMAIL_HOST_PASSWORD ='8891330866'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'The Daily Circles News <noreply@example.com>'
 
