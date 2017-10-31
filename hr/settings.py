@@ -12,7 +12,7 @@ SECRET_KEY = '@3&)2-3_*s0jpxfnca@4jqe7=$6!^21fg=nrx)jbtck8qo--_e'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'hrapp-sayone.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -32,6 +32,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
@@ -56,27 +57,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'hr.wsgi.application'
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'recruit',
-#         'USER': 'akshay95',
-#         'PASSWORD': 'akshay123@',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd2akfp79v5qpch',
-        'USER': 'iulhxvjgtcszjb',
-        'PASSWORD': 'a1fef21498e170425ef781fa847f199a61126419ddd76e3a80520534856695be',
-        'HOST': 'ec2-23-21-184-113.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'NAME': 'recruit',
+        'USER': 'akshay95',
+        'PASSWORD': 'akshay123@',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd2akfp79v5qpch',
+#         'USER': 'iulhxvjgtcszjb',
+#         'PASSWORD': 'a1fef21498e170425ef781fa847f199a61126419ddd76e3a80520534856695be',
+#         'HOST': 'ec2-23-21-184-113.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -116,7 +117,7 @@ STRIPE_PUBLIC_KEY ='pk_test_S5QEjDTTQ7njMXGtU4YPcjRF'
 STRIPE_SECRET_KEY ='sk_test_3gNLy1QOB6zNV0YmTQiTqET4'
 # STRIPE_API_KEY = 'sk_test_3gNLy1QOB6zNV0YmTQiTqET4'
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'dailycirclenews@gmail.com'
