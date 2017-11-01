@@ -27,8 +27,6 @@ class CandidateFormView(View):
         else:
             pass
         if(form.is_valid()):
-            import pdb
-            pdb.set_trace()
             form.save()
             return render(request,'homepage/response.html')
         else:
