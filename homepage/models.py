@@ -10,13 +10,13 @@ from django.db import models
 
 from hr import settings
 
-res_choices=(
+RES_CHOICES=(
         ('p','Pass'),
         ('f','fail'),
         ('w','waiting_list'),
     )
 
-dept_choices = (
+DEPT_CHOICES = (
     ('Android', 'Android'),
     ('Python', 'Python Django'),
     ('Tester','Tester'),
@@ -24,7 +24,7 @@ dept_choices = (
     ('HR', 'HR'),
 )
 
-exp_choices = (
+EXP_CHOICES = (
     ('0', 'Freshers'),
     ('1', 'One'),
     ('2', 'Two'),
@@ -41,11 +41,11 @@ class Candidate(models.Model):
     email=models.EmailField(primary_key=True)
     phone_number = models.CharField(validators=[phone_regex], max_length=15)
     college=models.CharField(max_length=100)
-    department = models.CharField(max_length=100, choices=dept_choices,blank=True)
+    department = models.CharField(max_length=100, choices=DEPT_CHOICES,blank=True)
     member=models.BooleanField(default=False)
     experience=models.IntegerField()
-    n_attempts=models.IntegerField(null=True)
-    result=models.CharField(max_length=100,choices=res_choices,blank=True)
+    n_attempts=models.IntegerField(default=1, blank=True, null=True)
+    result=models.CharField(max_length=100,choices=RES_CHOICES,blank=True)
 
     def __str__(self):
         return self.name
@@ -80,8 +80,8 @@ class Tokens(models.Model):
         return True, response
 
 class Jobs(models.Model):
-    department = models.CharField(max_length=100, choices=dept_choices)
-    experience=models.CharField(max_length=100,choices=exp_choices)
+    department = models.CharField(max_length=100, choices=DEPT_CHOICES)
+    experience=models.CharField(max_length=100,choices=EXP_CHOICES)
     education=models.CharField(max_length=100,blank=True)
 
     def __str__(self):

@@ -9,6 +9,7 @@
 </head>
 
 <body>
+{% include "./header.html" %}
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
@@ -59,7 +60,7 @@
         <div class="form-group">
           <label class="control-label" for="card">Card</label>
           <div class="controls">
-              <input name="number" type="text" id="card" class="form-control" data-stripe="number" />
+              <input name="number" value="424242424242" type="text" id="card" class="form-control" data-stripe="number" />
           </div>
         </div>
 
@@ -90,5 +91,6 @@
     </form>
 </div>
 </div>
+{% include "./footer.html" %}
 </body>
 </html>

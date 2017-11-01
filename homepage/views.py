@@ -3,29 +3,24 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
 from django.views import generic, View
-from django.conf import settings
 
 from .models import Candidate,Tokens,Jobs
 from .forms import CandForm,StripeForm,JobForm,Revisitform
 
 class CandidateFormView(View):
+    """view for candidate form"""
     model = Candidate
     form_class=CandForm
     template_name='homepage/candidate.html'
 
     def get(self,request):
         form=self.form_class()
-        if not self.request.user.is_staff:
-            form.fields.pop('result')
         return render(request,self.template_name,{'form':form})
 
     def post(self,request):
         print(self.request)
         form=self.form_class(request.POST)
-        if not self.request.user.is_staff:
-            form.fields.pop('result')
-        else:
-            pass
+
         if(form.is_valid()):
             form.save()
             return render(request,'homepage/response.html')
@@ -33,14 +28,7 @@ class CandidateFormView(View):
             pass
         return render(request,self.template_name,{'form':form})
 
-class StripeMixin(object):
-
-    def get_context_data(self, **kwargs):
-        context = super(StripeMixin, self).get_context_data(**kwargs)
-        context['publishable_key'] = settings.STRIPE_PUBLIC_KEY
-        return context
-
-class ChargeView(StripeMixin, generic.FormView):
+class ChargeView(generic.FormView):
     template_name = 'homepage/charge.html'
     form_class = StripeForm
     model = Tokens
@@ -79,7 +67,7 @@ class JobFormView(generic.FormView):
         form = self.form_class(request.POST)
         if (form.is_valid()):
             form.save()
-            return redirect('homepage:cform')
+            return redirect('homepage:candidate_form')
         else:
             return HttpResponse("invalid form")
         return render(request, self.template_name, {'form': form})
@@ -89,16 +77,16 @@ class Revisit(View):
     def post(self, request):
         form = Revisitform(request.POST)
         email = request.POST['email_field']
-        queryset = Candidate.objects.filter(email=email)
-        if queryset.count() > 0:
+        candidate = Candidate.objects.filter(email=email)
+        if candidate.count() > 0:
             if (form.is_valid()):
-                for r in queryset:
-                    n_attempts=r.n_attempts+1
-                    queryset.update(n_attempts=n_attempts)
+                for cand in candidate:
+                    n_attempts=cand.n_attempts+1
+                    candidate.update(n_attempts=n_attempts)
         else:
             return HttpResponse("Kindly register")
         return render(request, 'homepage/response.html')
 
     def get(self, request):
         form = Revisitform()
-        return redirect('homepage:cform')
+        return redirect('homepage:candidate_form')

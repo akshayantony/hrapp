@@ -21,28 +21,103 @@
              <div class="form-title-row text-center">
                 <h1>Candidate form</h1>
             </div>
-            <form id="myform" method="post" class="form-basic" style="list-style:none">
-                {% csrf_token  %}
-                <div class="form-row">
-                    {% for field in form %}
-                        <li>
-                        {{ field.label_tag }}<br>
-                        {{ field }}
-                        {{ field.errors }}
-                        </li>
-                    {% endfor %}
-                </div>
-                <button type="submit"> Submit </button>
-            </form>
+            <div>
+                <form class="well form-horizontal" action=" " method="post" class="form-basic" id="myform">
+                    {% csrf_token %}
+                    <fieldset>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Name</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input  name="name" placeholder="Name" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">E-Mail</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Phone</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input name="phone_number" placeholder="9999999999" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">College</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                                    <input name="college" placeholder="college" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Department</label>
+                            <div class="col-md-4 selectContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                        {{ form.department }}
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">experience</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                    <input class="form-control" name="experience" placeholder="experience">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-warning" >Submit <span class="glyphicon glyphicon-send"></span></button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+
+            </div>
             {% endblock candidateform %}
         </div>
+
+
         <div class="col-sm-6 col-md-6">
             {% block revisit %}
             <h4>Attended Sayone interviews in the past?</h4>
             <form method="post" action="{% url 'homepage:revisit'%}">
                 {% csrf_token  %}
-                <input type="email" name="email_field" class=" text-center" placeholder="Email">
-                <input class="btn btn-primary" type="submit" value="Submit">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">E-Mail</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input name="email_field" placeholder="E-Mail" class="form-control text-center"  type="email">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" value="Submit" class="btn btn-warning" >Submit <span class="glyphicon glyphicon-send"></span> </button>
             </form>
             {% endblock revisit %}
         </div>

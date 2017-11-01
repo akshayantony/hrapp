@@ -59,16 +59,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'hr.wsgi.application'
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'recruit',
-#         'USER': 'akshay95',
-#         'PASSWORD': 'akshay123@',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'recruit',
+        'USER': 'akshay95',
+        'PASSWORD': 'akshay123@',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 # DATABASES = {
 #     'default': {
@@ -77,16 +77,16 @@ WSGI_APPLICATION = 'hr.wsgi.application'
 #     }
 # }
 #
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd2akfp79v5qpch',
-        'USER': 'iulhxvjgtcszjb',
-        'PASSWORD': 'a1fef21498e170425ef781fa847f199a61126419ddd76e3a80520534856695be',
-        'HOST': 'ec2-23-21-184-113.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd2akfp79v5qpch',
+#         'USER': 'iulhxvjgtcszjb',
+#         'PASSWORD': 'a1fef21498e170425ef781fa847f199a61126419ddd76e3a80520534856695be',
+#         'HOST': 'ec2-23-21-184-113.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 #
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -145,5 +145,5 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-LOGIN_REDIRECT_URL = 'homepage:cform'
+LOGIN_REDIRECT_URL = 'homepage:candidate_form'
 LOGOUT_REDIRECT_URL = '/'
