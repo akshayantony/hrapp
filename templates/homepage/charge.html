@@ -1,25 +1,28 @@
+<!DOCTYPE html>
 <html>
+{% load staticfiles %}
 <head>
-    <title>Stripe Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/charge.css' %}">
 </head>
 
 <body>
-{% include "./header.html" %}
-
+<div>
+    {% include "./header.html" %}
+</div>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script type="text/javascript">
-
     Stripe.setPublishableKey('pk_test_S5QEjDTTQ7njMXGtU4YPcjRF');
     var stripeResponseHandler = function(status, response) {
         var $form = $('#checkout-form');
 
         if (response.error) {
+            window.alert(response.error.message);
             $form.find('.payment-errors').text(response.error.message);
             $form.find('.payment-errors').addClass('alert');
             $form.find('.payment-errors').addClass('alert-error');
@@ -30,67 +33,78 @@
             $form.get(0).submit();
         }
     };
-
     jQuery(function($) {
         $('#checkout-form').submit(function(e) {
             var $form = $(this);
-
             // Disable the submit button to prevent repeated clicks
             $form.find('button').prop('disabled', true);
-
             Stripe.createToken($form, stripeResponseHandler);
             return false;
         });
     });
-
 </script>
 
-<div class="container">
-<div class="row">
-    <form method="post" action="" id="checkout-form">
-        {% csrf_token %}
-
-        <div class="form-group">
-          <label class="control-label" for="email">Email</label>
-          <div class="controls">
-              <input name="email" type="email" id="email" class="form-control" data-stripe="email" />
-          </div>
+<div class="container-fluid">
+    <div class="creditCardForm">
+        <div class="heading">
+            <h1>Payment</h1>
         </div>
-
-        <div class="form-group">
-          <label class="control-label" for="card">Card</label>
-          <div class="controls">
-              <input name="number" value="424242424242" type="text" id="card" class="form-control" data-stripe="number" />
-          </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label" for="">Expiration (MM/YYYY)</label>
-            <div class="row">
-                <div class="col-xs-2">
-                    <input name="exp_month" type="text" size="2" data-stripe="exp_month" class="form-control" />
+        <div class="payment">
+            <form method="post" action="" id="checkout-form">
+                {% csrf_token %}
+                <div class="form-group owner">
+                    <label for="email">Email</label>
+                    <input name="email" type="email" placeholder="name@example.com" id="email" class="form-control" data-stripe="email" />
                 </div>
-                <div class="col-xs-2">
-                    <input name="exp_year" type="text" size="4" data-stripe="exp_year" class="form-control" />
+                {% for error in form.errors.email %}
+                <p class="error-message">
+                    <strong>{{ error|escape }}</strong>
+                </p>
+                {% endfor %}
+
+                <div class="form-group CVV">
+                    <label for="cvv">CVV</label>
+                    <input name="cvc" data-stripe="cvc" placeholder="234" type="text" class="form-control" id="cvv">
                 </div>
-            </div>
-        </div>
+                {% for error in form.errors.cvc %}
+                <p class="error-message">
+                    <strong>{{ error|escape }}</strong>
+                </p>
+                {% endfor %}
 
-        <div class="form-group">
-            <label class="control-label" for="cvc">CVC</label>
-            <div class="controls">
-                <input name="cvc" type="text" id="cvc" size="4" class="form-control" data-stripe="cvc" />
-            </div>
-        </div>
+                <div class="form-group" id="card-number-field">
+                    <label for="cardNumber">Card Number</label>
+                    <input name="number" type="text" class="form-control" id="cardNumber" data-stripe="number">
+                </div>
+                {% for error in form.errors.number %}
+                <p class="error-message">
+                    <strong>{{ error|escape }}</strong>
+                </p>
+                {% endfor %}
 
-        <div class="form-group">
-            <div class="controls">
-                <input type="submit" value="Submit" class="btn btn-primary" />
-            </div>
+                <div class="form-group" id="expiration-date">
+                    <label for="">Expiration (MM/YYYY)</label>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <input name="exp_month" data-stripe="exp_month" placeholder="MM" type="text" size="2" data-stripe="exp_month" class="form-control" />
+                        </div>
+                        <div class="col-xs-6">
+                            <input name="exp_year" data-stripe="exp_year" type="text" placeholder="YYYY" size="4" data-stripe="exp_year" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="pay-now">
+                    <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+                </div>
+            {{form.errors}}
+            </form>
         </div>
-    </form>
+    </div>
+
+
 </div>
-</div>
-{% include "./footer.html" %}
+<div>{% include "./footer.html" %}</div>
 </body>
+
 </html>

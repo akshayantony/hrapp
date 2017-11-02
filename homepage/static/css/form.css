@@ -155,5 +155,36 @@
 }
 #id_department{
     background-color: #F9F9F3;
-    height: 28px;
+    height: 43px;
+    width: 200%;
+    border: 1px solid #dbdbdb;
+}
+
+#id_experience{
+    background-color: #F9F9F3;
+    height: 43px;
+    width: 200%;
+    border: 1px solid #dbdbdb;
+}
+
+.pastintrview{
+    margin-top:69px;
+}
+
+.boxcolor{
+    background-color: #f5f5f5;
+    color: black;
+}
+#headstyle{
+    color: dimgrey;
+}
+
+#mailtg{
+    color: rebeccapurple;
+}
+
+#educationjob{
+    height: 43px;
+    width: 200%;
+    border: 1px solid #dbdbdb;
 }

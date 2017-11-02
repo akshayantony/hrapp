@@ -12,8 +12,8 @@ class CandForm(forms.ModelForm):
 
 class StripeForm(forms.Form):
     email = forms.EmailField(required=True)
-    number = forms.IntegerField(required=True, label="Card Number", initial=123)
-    exp_month = forms.IntegerField(initial=12)
+    number = forms.IntegerField(required=True, label="Card Number")
+    exp_month = forms.IntegerField(initial=12,required=True)
     exp_year = forms.IntegerField(initial=2019,required=True)
     cvc = forms.IntegerField(required=True, label="CCV Number", max_value=9999, widget=forms.TextInput(attrs={'size': '4'}))
     stripe_token = forms.CharField()

@@ -59,23 +59,23 @@ TEMPLATES = [
 WSGI_APPLICATION = 'hr.wsgi.application'
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'recruit',
-        'USER': 'akshay95',
-        'PASSWORD': 'akshay123@',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'recruit',
+#         'USER': 'akshay95',
+#         'PASSWORD': 'akshay123@',
+#         'HOST': 'localhost',
+#         'PORT': '',
 #     }
 # }
+#
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 #
 # DATABASES = {
 #     'default': {

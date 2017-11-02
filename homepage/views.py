@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
 from django.views import generic, View
+from django.contrib import messages
 
 from .models import Candidate,Tokens,Jobs
 from .forms import CandForm,StripeForm,JobForm,Revisitform
@@ -40,17 +41,19 @@ class ChargeView(generic.FormView):
 
     def post(self, request):
         form = self.form_class(request.POST)
-
         email = request.POST['email']
         queryset = Candidate.objects.filter(email=email)
         if queryset.count()>0:
             if (form.is_valid()):
                 queryset.update(member='True')
-                return HttpResponse("Success! We've charged your card!")
+                messages.success(request, 'Success we have charged your card')
+                return render(request,'homepage/statusmsg.html', {'form': form})
             else:
-                return HttpResponse("Sorry! attempt failed.. try again later")
+                messages.success(request, 'Sorry! attempt failed.. try again later')
+                return render(request, 'homepage/statusmsg.html', {'form': form})
         else:
-            return HttpResponse("Kindly enter your details in candidate details form first")
+            messages.success(request, 'Kindly enter your details in candidate details form first')
+            return render(request,'homepage/statusmsg.html', {'form': form})
         return render(request, self.template_name, {'form': form})
 
 
@@ -84,7 +87,8 @@ class Revisit(View):
                     n_attempts=cand.n_attempts+1
                     candidate.update(n_attempts=n_attempts)
         else:
-            return HttpResponse("Kindly register")
+            messages.info(request, 'Email not found. please fill in the candidate form X')
+            return redirect('homepage:candidate_form')
         return render(request, 'homepage/response.html')
 
     def get(self, request):

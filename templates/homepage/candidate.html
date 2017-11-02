@@ -8,6 +8,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <style>
+    #alertcolor{
+        color: red;
+        opacity:1.2;
+        font-size: 15px;
+    }
+    </style>
 </head>
 
 <body>
@@ -19,10 +26,10 @@
 
             {% block candidateform %}
              <div class="form-title-row text-center">
-                <h1>Candidate form</h1>
+                <h1 id="headstyle">Candidate form</h1>
             </div>
             <div>
-                <form class="well form-horizontal" action=" " method="post" class="form-basic" id="myform">
+                <form class="well form-horizontal boxcolor form-basic" action=" " method="post" id="myform">
                     {% csrf_token %}
                     <fieldset>
 
@@ -31,40 +38,61 @@
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                    <input  name="name" placeholder="Name" class="form-control"  type="text">
+                                    <input  name="name" placeholder="Name" type="text" style="width:200%">
                                 </div>
                             </div>
                         </div>
+                        {% for error in form.errors.name %}
+                        <p class="error-message">
+                            <strong>{{ error|escape }}</strong>
+                        </p>
+                        {% endfor %}
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">E-Mail</label>
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                    <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+                                    <input name="email" placeholder="E-Mail Address" type="text" style="width:200%">
                                 </div>
                             </div>
                         </div>
+                        {% for error in form.errors.email %}
+                        <p class="error-message">
+                            <strong>{{ error|escape }}</strong>
+                        </p>
+                        {% endfor %}
+
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Phone</label>
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                    <input name="phone_number" placeholder="9999999999" class="form-control" type="text">
+                                    <input name="phone_number" placeholder="9999999999" type="text" style="width:200%">
                                 </div>
                             </div>
                         </div>
+                        {% for error in form.errors.phone_number %}
+                        <p class="error-message">
+                            <strong>{{ error|escape }}</strong>
+                        </p>
+                        {% endfor %}
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">College</label>
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
-                                    <input name="college" placeholder="college" class="form-control" type="text">
+                                    <input name="college" placeholder="college" type="text" style="width:200%">
                                 </div>
                             </div>
                         </div>
+                        {% for error in form.errors.college %}
+                        <p class="error-message">
+                            <strong>{{ error|escape }}</strong>
+                        </p>
+                        {% endfor %}
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Department</label>
@@ -73,38 +101,47 @@
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                         {{ form.department }}
                                 </div>
-
                             </div>
                         </div>
+                        {% for error in form.errors.department %}
+                        <p class="error-message">
+                            <strong>{{ error|escape }}</strong>
+                        </p>
+                        {% endfor %}
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">experience</label>
                             <div class="col-md-4 inputGroupContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                    <input class="form-control" name="experience" placeholder="experience">
+                                    <input class="" name="experience" placeholder="experience" style="width:200%">
                                 </div>
                             </div>
                         </div>
+                        {% for error in form.errors.experience %}
+                        <p class="error-message">
+                            <strong>{{ error|escape }}</strong>
+                        </p>
+                        {% endfor %}
 
                         <div class="form-group">
                             <label class="col-md-4 control-label"></label>
-                            <div class="col-md-4">
+                            <div class="col-md-12">
                                 <button type="submit" class="btn btn-warning" >Submit <span class="glyphicon glyphicon-send"></span></button>
                             </div>
                         </div>
 
                     </fieldset>
                 </form>
-
             </div>
             {% endblock candidateform %}
         </div>
 
 
-        <div class="col-sm-6 col-md-6">
             {% block revisit %}
-            <h4>Attended Sayone interviews in the past?</h4>
+        <div class="col-sm-1 col-md-1 pastintrview"><b>--OR--</b></div>
+        <div class="col-sm-5 col-md-5 pastintrview">
+            <p class="text-primary">Attended Sayone interviews in the past? <a href="#" id="mailtg">fill here</a></p>
             <form method="post" action="{% url 'homepage:revisit'%}">
                 {% csrf_token  %}
                 <div class="form-group">
@@ -116,9 +153,18 @@
                         </div>
                     </div>
                 </div>
-
-                <button type="submit" value="Submit" class="btn btn-warning" >Submit <span class="glyphicon glyphicon-send"></span> </button>
+                    <button type="submit" value="Submit" class="btn btn-primary" >Submit</button>
             </form>
+            <div class="alert alert-dismissable col-sm-8 col-md-8" id="msg">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages|slice:":-1" %}
+                    <a href="#" class="close pull-left" id="alertcolor" data-dismiss="alert" aria-label="close" style="">{{ message }}</a>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
             {% endblock revisit %}
         </div>
         <br>
