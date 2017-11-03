@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="519c83d6-eb31-48a1-9147-8eefc5e3bf19" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/homepage/static/js/charge.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/admin.py" afterPath="$PROJECT_DIR$/homepage/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/forms.py" afterPath="$PROJECT_DIR$/homepage/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/models.py" afterPath="$PROJECT_DIR$/homepage/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/urls.py" afterPath="$PROJECT_DIR$/homepage/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homepage/views.py" afterPath="$PROJECT_DIR$/homepage/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hr/settings.py" afterPath="$PROJECT_DIR$/hr/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/homepage/candidate.html" afterPath="$PROJECT_DIR$/templates/homepage/candidate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/homepage/charge.html" afterPath="$PROJECT_DIR$/templates/homepage/charge.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/homepage/footer.html" afterPath="$PROJECT_DIR$/templates/homepage/footer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/homepage/header.html" afterPath="$PROJECT_DIR$/templates/homepage/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/homepage/jobupdates.html" afterPath="$PROJECT_DIR$/templates/homepage/jobupdates.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/homepage/login.html" afterPath="$PROJECT_DIR$/templates/homepage/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/homepage/response.html" afterPath="$PROJECT_DIR$/templates/homepage/response.html" />
-    </list>
+    <list default="true" id="519c83d6-eb31-48a1-9147-8eefc5e3bf19" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +106,7 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hr/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1188">
+            <state relative-caret-position="216">
               <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding />
             </state>
@@ -706,7 +689,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hr/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
+        <state relative-caret-position="216">
           <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding />
         </state>
