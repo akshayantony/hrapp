@@ -6,12 +6,12 @@ from django.views import generic, View
 from django.contrib import messages
 
 from .models import Candidate,Tokens,Jobs
-from .forms import CandForm,StripeForm,JobForm,Revisitform
+from .forms import CandidateForm,StripeForm,JobForm,Revisitform
 
 class CandidateFormView(View):
     """view for candidate form in homepage of app"""
     model = Candidate
-    form_class=CandForm
+    form_class=CandidateForm
     template_name='homepage/candidate.html'
 
     def get(self,request):
@@ -30,7 +30,9 @@ class CandidateFormView(View):
         return render(request,self.template_name,{'form':form})
 
 class ChargeView(generic.FormView):
-    """view for making payments using stripes. token generated using javascript and charge function call done in clean()"""
+    """view for making payments using stripes. token generated using javascript and charge
+    function call done in clean()
+    """
     template_name = 'homepage/charge.html'
     form_class = StripeForm
     model = Tokens
@@ -63,6 +65,9 @@ class ChargeView(generic.FormView):
 
 
 class JobFormView(generic.FormView):
+    """View for HR to send job updates to candidates. After updating details and clicking submit,
+     Emails are sent to payed members
+     """
     template_name = 'homepage/jobupdates.html'
     form_class = JobForm
     model=Jobs
@@ -82,7 +87,10 @@ class JobFormView(generic.FormView):
         return render(request, self.template_name, {'form': form})
 
 class Revisit(View):
-
+    """View for accepting email of candidates who already attended company
+    interviews in the past, and number of attempts of these candidates are incremented
+    for each visit
+    """
     def get(self, request):
         return redirect('homepage:candidate_form')
 

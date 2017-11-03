@@ -5,7 +5,7 @@ from .models import Candidate,Tokens,Jobs
 
 from datetime import date
 
-class CandForm(forms.ModelForm):
+class CandidateForm(forms.ModelForm):
 
     class Meta:
         model=Candidate

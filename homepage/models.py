@@ -53,7 +53,7 @@ class Candidate(models.Model):
     def __str__(self):
         return self.name
 
-
+#charge_id for checking double payment
 class Tokens(models.Model):
     charge_id = models.CharField(max_length=32,blank=True)
 
@@ -62,6 +62,7 @@ class Tokens(models.Model):
         stripe.api_key = settings.STRIPE_SECRET_KEY
         self.stripe = stripe
 
+    #function for charging users after clean is performed
     def charge(self, token):
         if self.charge_id:
             return False, Exception(message="Already charged.")
@@ -78,6 +79,7 @@ class Tokens(models.Model):
             return False, {'message': 'failed'}
         return True, response
 
+#model for job updating by hr
 class Jobs(models.Model):
     department = models.CharField(max_length=100, choices=DEPT_CHOICES)
     experience=models.CharField(max_length=100,choices=EXP_CHOICES)
@@ -86,6 +88,7 @@ class Jobs(models.Model):
     def __str__(self):
         return self.department
 
+#function for sending emails to paid members after save button is clicked
 @receiver(post_save, dispatch_uid="news_update", sender=Jobs)
 def subscription_handler(instance,**kwargs):
     subscribers=Candidate.objects.filter(member=True)
