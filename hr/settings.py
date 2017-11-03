@@ -63,7 +63,7 @@ WSGI_APPLICATION = 'hr.wsgi.application'
 #         'PORT': '',
 #     }
 # }
-#
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
