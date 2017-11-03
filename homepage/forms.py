@@ -1,13 +1,15 @@
 from django import forms
-from .models import Candidate,Tokens,Jobs
 from django.core.exceptions import ValidationError
+
+from .models import Candidate,Tokens,Jobs
+
 from datetime import date
 
 class CandForm(forms.ModelForm):
 
     class Meta:
         model=Candidate
-        fields=['name', 'email', 'phone_number', 'college','department','experience','n_attempts','result']
+        fields='__all__'
 
 
 class StripeForm(forms.Form):
@@ -17,7 +19,6 @@ class StripeForm(forms.Form):
     exp_year = forms.IntegerField(initial=2019,required=True)
     cvc = forms.IntegerField(required=True, label="CCV Number", max_value=9999, widget=forms.TextInput(attrs={'size': '4'}))
     stripe_token = forms.CharField()
-
 
     def clean(self):
         cleaned = super(StripeForm, self).clean()
@@ -29,13 +30,9 @@ class StripeForm(forms.Form):
             raise ValidationError("enter a valid date")
 
         if not self.errors:
-            email = self.cleaned_data["email"]
-            number = self.cleaned_data["number"]
-            cvc = self.cleaned_data["cvc"]
             token = self.cleaned_data["stripe_token"]
             tokenobj = Tokens()
-
-            success, instance = tokenobj.charge(1000, number, exp_month, exp_year, cvc, token)
+            success, instance = tokenobj.charge(token)
 
             if not success:
                 raise forms.ValidationError("Error: %s" % instance.get('message'))
@@ -44,6 +41,7 @@ class StripeForm(forms.Form):
                 pass
 
         return cleaned
+
 
 class JobForm(forms.ModelForm):
     class Meta:

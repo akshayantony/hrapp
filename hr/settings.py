@@ -1,13 +1,7 @@
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '@3&)2-3_*s0jpxfnca@4jqe7=$6!^21fg=nrx)jbtck8qo--_e'
 
 DEBUG = True
@@ -70,24 +64,24 @@ WSGI_APPLICATION = 'hr.wsgi.application'
 #     }
 # }
 #
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-#
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd2akfp79v5qpch',
-#         'USER': 'iulhxvjgtcszjb',
-#         'PASSWORD': 'a1fef21498e170425ef781fa847f199a61126419ddd76e3a80520534856695be',
-#         'HOST': 'ec2-23-21-184-113.compute-1.amazonaws.com',
-#         'PORT': '5432',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-#
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd2akfp79v5qpch',
+        'USER': 'iulhxvjgtcszjb',
+        'PASSWORD': 'a1fef21498e170425ef781fa847f199a61126419ddd76e3a80520534856695be',
+        'HOST': 'ec2-23-21-184-113.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -124,7 +118,6 @@ CORS_ORIGIN_WHITELIST = (
 
 STRIPE_PUBLIC_KEY ='pk_test_S5QEjDTTQ7njMXGtU4YPcjRF'
 STRIPE_SECRET_KEY ='sk_test_3gNLy1QOB6zNV0YmTQiTqET4'
-# STRIPE_API_KEY = 'sk_test_3gNLy1QOB6zNV0YmTQiTqET4'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

@@ -2,68 +2,68 @@
 
 {% block candidateform %}
 <div class="row">
-        <div class="col-sm-12 col-md-12">
+    <div class="col-sm-12 col-md-12">
 
-            <div class="form-title-row text-center">
-                <h1 id="headstyle">Vacancy details</h1>
-            </div>
-
-            <form method="post" class="well form-horizontal boxcolor" style="list-style:none">
-                {% csrf_token  %}
-                <fieldset>
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Department</label>
-                        <div class="col-md-4 selectContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                {{ form.department }}
-                            </div>
-                        </div>
-                    </div>
-                    {% for error in form.errors.department %}
-                    <p class="error-message">
-                        <strong>{{ error|escape }}</strong>
-                    </p>
-                    {% endfor %}
-
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Experience</label>
-                        <div class="col-md-4 selectContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                {{ form.experience }}
-                            </div>
-                        </div>
-                    </div>
-                    {% for error in form.errors.experience %}
-                    <p class="error-message">
-                        <strong>{{ error|escape }}</strong>
-                    </p>
-                    {% endfor %}
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Education</label>
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
-                                <input name="education" placeholder="education" id="educationjob" type="text" >
-                            </div>
-                        </div>
-                    </div>
-                    {% for error in form.errors.education %}
-                    <p class="error-message">
-                        <strong>{{ error|escape }}</strong>
-                    </p>
-                    {% endfor %}
-                    <div align="center">
-                        <button type="submit" class="btn btn-primary"> Submit </button>
-                    </div>
-                </fieldset>
-            </form>
+        <div class="form-title-row text-center">
+            <h1 id="headstyle">Vacancy details</h1>
         </div>
-        <br>
+
+        <form method="post" class="well form-horizontal boxcolor" style="list-style:none">
+            {% csrf_token  %}
+            <fieldset>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Department</label>
+                    <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                            {{ form.department }}
+                        </div>
+                    </div>
+                </div>
+                {% for error in form.errors.department %}
+                <p class="error-message">
+                    <strong>{{ error|escape }}</strong>
+                </p>
+                {% endfor %}
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Experience</label>
+                    <div class="col-md-4 selectContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            {{ form.experience }}
+                        </div>
+                    </div>
+                </div>
+                {% for error in form.errors.experience %}
+                <p class="error-message">
+                    <strong>{{ error|escape }}</strong>
+                </p>
+                {% endfor %}
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Education</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                            <input name="education" placeholder="education" id="educationjob" type="text" >
+                        </div>
+                    </div>
+                </div>
+                {% for error in form.errors.education %}
+                <p class="error-message">
+                    <strong>{{ error|escape }}</strong>
+                </p>
+                {% endfor %}
+                <div align="center">
+                    <button type="submit" class="btn btn-primary"> Submit </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <br>
 </div>
 {% endblock candidateform %}
 {% block revisit %}

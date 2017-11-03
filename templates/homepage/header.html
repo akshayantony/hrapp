@@ -10,13 +10,6 @@
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
 	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 
-<style type="text/css">
-
-</style>
-
-
-
-
 </head>
 
 	<body>
@@ -30,7 +23,7 @@
 				<nav>
 					<a href="{% url 'homepage:candidate_form' %}">Home</a>
 					{% if request.user.is_superuser %}
-					<a href="{% url 'homepage:jobform' %}" >Send Job Updates</a>
+					<a href="{% url 'homepage:jobupdates' %}" >Send Job Updates</a>
 					<a href="{% url 'logout' %}">logout</a>
 					{% endif %}
 					<a href="{% url 'homepage:charge' %}">Payment</a>

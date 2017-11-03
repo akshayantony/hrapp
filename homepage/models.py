@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+
 from django.core.validators import RegexValidator
 from django.utils.encoding import python_2_unicode_compatible
 from django.dispatch import receiver
@@ -9,6 +10,8 @@ from django.template import loader
 from django.db import models
 
 from hr import settings
+
+import stripe
 
 RES_CHOICES=(
         ('p','Pass'),
@@ -56,27 +59,23 @@ class Tokens(models.Model):
 
     def __init__(self, *args, **kwargs):
         super(Tokens, self).__init__(*args, **kwargs)
-
-        import stripe
         stripe.api_key = settings.STRIPE_SECRET_KEY
         self.stripe = stripe
 
-    def charge(self, price_in_cents, number, exp_month, exp_year, cvc, token):
+    def charge(self, token):
         if self.charge_id:
             return False, Exception(message="Already charged.")
 
         try:
             response = self.stripe.Charge.create(
-                amount=1000,
+                amount=50,
                 currency="usd",
                 source=token,
                 description='Thank you for your purchase!')
 
             self.charge_id = response.id
-
         except self.stripe.CardError:
             return False, {'message': 'failed'}
-
         return True, response
 
 class Jobs(models.Model):

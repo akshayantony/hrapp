@@ -2,8 +2,8 @@
 {% load staticfiles %}
 <head>
     <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -25,7 +25,7 @@
         <div class="col-sm-6 col-md-6">
 
             {% block candidateform %}
-             <div class="form-title-row text-center">
+            <div class="form-title-row text-center">
                 <h1 id="headstyle">Candidate form</h1>
             </div>
             <div>
@@ -99,7 +99,7 @@
                             <div class="col-md-4 selectContainer">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                        {{ form.department }}
+                                    {{ form.department }}
                                 </div>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
         </div>
 
 
-            {% block revisit %}
+        {% block revisit %}
         <div class="col-sm-1 col-md-1 pastintrview"><b>--OR--</b></div>
         <div class="col-sm-5 col-md-5 pastintrview">
             <p class="text-primary">Attended Sayone interviews in the past? <a href="#" id="mailtg">fill here</a></p>
@@ -153,7 +153,7 @@
                         </div>
                     </div>
                 </div>
-                    <button type="submit" value="Submit" class="btn btn-primary" >Submit</button>
+                <button type="submit" value="Submit" class="btn btn-primary" >Submit</button>
             </form>
             <div class="alert alert-dismissable col-sm-8 col-md-8" id="msg">
                 {% if messages %}
@@ -171,8 +171,8 @@
     </div>
     {% block member %} {% endblock member %}
 </div>
-{%block footer%}
+{% block footer %}
 {% include "./footer.html" %}
-{%endblock footer %}
+{% endblock footer %}
 </body>
 </html>

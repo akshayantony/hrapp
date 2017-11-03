@@ -6,9 +6,9 @@
     <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
     <link rel="stylesheet" href="css/login.css">
     <style>
-        .spacing{
+      .spacing{
             margin-bottom: 23px;
-        }
+      }
     </style>
 </head>
 
@@ -18,15 +18,15 @@
 <div class="container" align="center">
     <div >
         <h2>Login</h2>
-            <form method="post">
-                <fieldset>
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="btn btn-info" type="submit" style="width:100px">Login</button>
-                </fieldset>
-                <br />
-                <br />
-            </form>
+        <form method="post">
+            <fieldset>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-info" type="submit" style="width:100px">Login</button>
+            </fieldset>
+            <br />
+            <br />
+        </form>
     </div>
 </div>
 {% include "./footer.html" %}
